@@ -1,5 +1,10 @@
+# ide dirs
 .idea/
+
+# build dirs
 cmake-build-debug/
 cmake-build-release/
+build/
 
+# Some secret vars
 .env
