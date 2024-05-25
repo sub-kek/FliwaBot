@@ -9,9 +9,8 @@ namespace FliwaBot {
     FliwaCord::embed embed = FliwaCord::embed();
 
     embed.set_color(0x9f40ff);
-    FliwaCord::embed_footer embed_footer = FliwaCord::embed_footer();
-    embed_footer.set_text(dotenv::getenv("BASE_FOOTER"));
-    embed.set_footer(embed_footer);
+    embed.set_footer(FliwaCord::embed_footer()
+                         .set_text(dotenv::getenv("BASE_FOOTER")));
 
     return embed;
   }
