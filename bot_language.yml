@@ -1,0 +1,8 @@
+# 0 - Uptime
+# 1 - Cluster name
+# 2 - Author from the config
+
+command-status-embed-description: |
+  Uptime: {0}
+  Cluster: {1}
+  Author: {2}

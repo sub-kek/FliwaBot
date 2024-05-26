@@ -2,7 +2,9 @@
 
 #include "../builder.h"
 #include "../config/config.h"
+#include "../config/language.h"
 #include <chrono>
+#include <format>
 
 constexpr unsigned int hash(const char *s, int off = 0) {
   return !s[off] ? 5381 : (hash(s, off + 1) * 33) ^ s[off];
@@ -19,11 +21,12 @@ void FliwaBot::event::on_slashcommand(const FliwaCord::slashcommand_t &event) {
 
       FliwaCord::embed embed = FliwaBot::embed_builder::get_styled_embed();
       embed.set_title("Статус Fliwa");
-      embed.set_description(std::string(
-          "Аптайм: " + FliwaBot::bot::core->uptime().to_string() + "\n" +
-          "Автор: " + config::author_name + "\n" +
-          "Кластер: " + config::cluster_name
-      ));
+      embed.set_description(formatter::format(language::command_status_embed_description,
+                                              {
+                                                  bot::core->uptime().to_string(),
+                                                  config::cluster_name,
+                                                  config::author_name,
+                                              }));
 
       message.add_embed(embed);
 

@@ -1,5 +1,7 @@
 #include "utility.h"
 
+#include <regex>
+
 namespace FliwaBot {
   void dotenv::init(const char *filename) {
     dotenv::do_init(OptionsNone, filename);
@@ -122,6 +124,16 @@ namespace FliwaBot {
     const char last = str[len - 1];
     if (first == last && ('"' == first || '\'' == first))
       return str.substr(1, len - 2);
+    return str;
+  }
+
+  std::string formatter::format(std::string str, const std::initializer_list<std::string>& replace) {
+    int i = 0;
+    for (const auto& repl : replace) {
+      std::string pattern = "\\{" + std::to_string(i) + "\\}";
+      str = std::regex_replace(str, std::regex(pattern), repl);
+      i++;
+    }
     return str;
   }
 }

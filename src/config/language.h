@@ -4,15 +4,13 @@
 #include <string>
 
 namespace FliwaBot {
-  class config {
+  class language {
   private:
     static YAML::Node language_file;
 
   public:
     static void init(const char *file_path);
 
-    static std::string license_footer;
-    static std::string cluster_name;
-    static std::string author_name;
+    static std::string command_status_embed_description;
   };
 }

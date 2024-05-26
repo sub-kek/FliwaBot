@@ -1,5 +1,6 @@
 #include "bot.h"
 #include "config/config.h"
+#include "config/language.h"
 
 #include "event/fliwa_event.h"
 
@@ -28,5 +29,6 @@ namespace FliwaBot {
     core = new FliwaCord::cluster(start_data::token, start_data::intents);
     core->on_log(FliwaCord::utility::cout_logger());
     config::init("bot_config.yml");
+    language::init("bot_language.yml");
   }
 }

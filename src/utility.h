@@ -43,4 +43,9 @@ namespace FliwaBot {
 
     static size_t find_var_end(const std::string &str, size_t pos, const std::string &start_tag);
   };
+
+  class formatter {
+  public:
+    static std::string format(std::string str, const std::initializer_list<std::string>& replace);
+  };
 }
