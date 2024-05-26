@@ -1,11 +1,12 @@
 #include "bot.h"
+#include "config/config.h"
 
 #include "event/fliwa_event.h"
 
 namespace FliwaBot {
   FliwaCord::cluster *bot::core = nullptr;
 
-  std::string bot::start_data::token = "null";
+  std::string bot::start_data::token;
   FliwaCord::intents bot::start_data::intents;
 
   bool bot::start() {
@@ -26,5 +27,6 @@ namespace FliwaBot {
   void bot::init() {
     core = new FliwaCord::cluster(start_data::token, start_data::intents);
     core->on_log(FliwaCord::utility::cout_logger());
+    config::init("bot_config.yml");
   }
 }
