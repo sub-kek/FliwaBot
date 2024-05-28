@@ -20,5 +20,8 @@ namespace FliwaBot {
     static void register_slashcommands();
 
     static FliwaCord::cluster *core;
+
+    static void logger(const FliwaCord::log_t &event);
+    static void log(const FliwaCord::loglevel& severity, const std::string& message);
   };
 }

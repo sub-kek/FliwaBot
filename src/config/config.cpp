@@ -17,7 +17,7 @@ namespace FliwaBot {
 
   void config::init(const char *file_path) {
     language_file = YAML::LoadFile(file_path);
-    bot::core->log(FliwaCord::ll_info, "Configuration loaded from: " + std::string(file_path) + ".");
+    bot::log(FliwaCord::ll_info, "Configuration loaded from: " + std::string(file_path) + ".");
 
     license_footer = language_file["license-footer"].as<std::string>();
     cluster_name = language_file["cluster-name"].as<std::string>();

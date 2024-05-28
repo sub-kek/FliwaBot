@@ -6,7 +6,7 @@
 #include "utility.h"
 
 namespace FliwaBot {
-  FliwaCord::cluster *bot::core = nullptr;
+  FliwaCord::cluster *bot::core;
   std::string bot::start_data::token;
   FliwaCord::intents bot::start_data::intents;
 
@@ -16,6 +16,7 @@ namespace FliwaBot {
   }
 
   void bot::register_events() {
+    core->on_log(logger);
     core->on_slashcommand(event::on_slashcommand);
     core->on_ready(event::on_ready);
   }
@@ -40,8 +41,19 @@ namespace FliwaBot {
 
   void bot::init() {
     core = new FliwaCord::cluster(start_data::token, start_data::intents);
-    core->on_log(FliwaCord::utility::cout_logger());
     config::init("bot_config.yml");
     language::init("bot_language.yml");
+  }
+
+  void bot::logger(const FliwaCord::log_t &event) {
+    std::cout
+        << "[" << FliwaCord::utility::current_date_time() << " " << FliwaCord::utility::loglevel(event.severity) << "]"
+        << ": " << event.message << "\n";
+  }
+
+  void bot::log(const FliwaCord::loglevel& severity, const std::string &message) {
+    std::cout
+        << "[" << FliwaCord::utility::current_date_time() << " " << FliwaCord::utility::loglevel(severity) << "]"
+        << ": " << message << "\n";
   }
 }

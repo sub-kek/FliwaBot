@@ -17,7 +17,7 @@ namespace FliwaBot {
 
   void language::init(const char *file_path) {
     language_file = YAML::LoadFile(file_path);
-    bot::core->log(FliwaCord::ll_info, "Language loaded from: " + std::string(file_path) + ".");
+    bot::log(FliwaCord::ll_info, "Language loaded from: " + std::string(file_path) + ".");
 
     command_status_embed_description = language_file["command-status-embed-description"].as<std::string>();
     command_status_embed_title = language_file["command-status-embed-title"].as<std::string>();
