@@ -149,4 +149,8 @@ namespace FliwaBot {
     completed = true;
     lck.notify_all();
   }
+
+  bool thread_locker::is_locked() {
+    return !completed;
+  }
 }

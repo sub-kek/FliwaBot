@@ -14,4 +14,4 @@ command-reload-successfully: 'Config reloaded.'
 
 command-ping-embed-description-checking: 'Checking ping...'
 # 0 - Latency in ms
-command-ping-embed-description: 'Ping: {0}ms'
+command-ping-embed-description: 'Latency: {0}ms'

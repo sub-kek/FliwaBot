@@ -9,7 +9,9 @@ configure_file(".env" ".env" COPYONLY)
 configure_file("bot_config.yml" "bot_config.yml" COPYONLY)
 configure_file("bot_language.yml" "bot_language.yml" COPYONLY)
 
-target_compile_features(FliwaBot PUBLIC cxx_std_23)
+target_compile_options(FliwaBot PRIVATE -Wall -Wextra -Wpedantic -Werror)
+
+target_compile_features(FliwaBot PRIVATE cxx_std_23)
 
 add_subdirectory("libs/FliwaCord")
 add_subdirectory("libs/yaml-cpp")

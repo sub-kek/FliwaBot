@@ -52,5 +52,6 @@ namespace FliwaBot {
   public:
     void wait();
     void complete();
+    bool is_locked();
   };
 }
