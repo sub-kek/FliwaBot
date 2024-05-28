@@ -1,4 +1,10 @@
-cluster-name: 'Фивя #0'
+cluster-name: 'Fliwa #0'
 
 author-name: 'subkek#0'
+author-id: '667782570955767829'
+
 license-footer: 'sub-kek © All rights reserved'
+command-status-send-dm: false
+command-status-ephemeral: false
+
+command-reload-ephemeral: false

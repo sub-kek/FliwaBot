@@ -1,5 +1,7 @@
 #include "utility.h"
 
+#include <fstream>
+#include <iostream>
 #include <regex>
 
 namespace FliwaBot {
@@ -135,5 +137,16 @@ namespace FliwaBot {
       i++;
     }
     return str;
+  }
+
+  void thread_locker::wait() {
+    std::unique_lock<std::mutex> lock(mtx);
+    lck.wait(lock, [&] { return completed == true; });
+  }
+
+  void thread_locker::complete() {
+    std::lock_guard<std::mutex> lock(mtx);
+    completed = true;
+    lck.notify_all();
   }
 }

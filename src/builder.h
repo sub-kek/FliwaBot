@@ -1,13 +1,4 @@
-//
-// Created by sub on 5/24/24.
-//
-
 #pragma once
-
-#include <FliwaCord/message.h>
-#include <FliwaCord/colors.h>
-
-#include "utility.h"
 
 namespace FliwaBot {
   class embed_builder {

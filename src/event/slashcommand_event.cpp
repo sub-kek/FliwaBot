@@ -1,43 +1,39 @@
-#include "fliwa_event.h"
+#include <chrono>
 
-#include "../builder.h"
+#include "fliwa_event.h"
 #include "../config/config.h"
 #include "../config/language.h"
-#include <chrono>
-#include <format>
+#include "../command/command.h"
 
 constexpr unsigned int hash(const char *s, int off = 0) {
   return !s[off] ? 5381 : (hash(s, off + 1) * 33) ^ s[off];
 }
 
 void FliwaBot::event::on_slashcommand(const FliwaCord::slashcommand_t &event) {
+  for (auto &cmd: command::commands) {
+    if (event.command.get_command_name() != cmd->get_name()) continue;
+
+    cmd->execute(event);
+    break;
+  }
+
+  // Soon i'll remove it
   switch (hash(event.command.get_command_name().data())) {
-    case hash("ping"):
-      event.edit_original_response("Имя бота " + bot::core->me.format_username());
-      break;
+    case hash("reload"): {
+      FliwaCord::message message = FliwaCord::message()
+          .set_content(language::command_reload_no_perms)
+          .set_flags(config::command_reload_ephemeral ? FliwaCord::m_ephemeral : 0);
 
-    case hash("status"):
-      FliwaCord::message message = FliwaCord::message();
+      if (event.command.usr.id.str() == config::author_id) {
+        config::init("bot_config.yml");
+        language::init("bot_language.yml");
 
-      FliwaCord::embed embed = FliwaBot::embed_builder::get_styled_embed();
-      embed.set_title("Статус Fliwa");
-      embed.set_description(formatter::format(language::command_status_embed_description,
-                                              {
-                                                  bot::core->uptime().to_string(),
-                                                  config::cluster_name,
-                                                  config::author_name,
-                                              }));
+        message.set_content(language::command_reload_successfully);
+      }
 
-      message.add_embed(embed);
-
-      FliwaCord::message reply_message = FliwaCord::message()
-          .set_content("Статус бота отправлен вам в личные сообщения.")
-          .set_flags(FliwaCord::m_ephemeral);
-
-      event.reply(reply_message);
-
-      bot::core->direct_message_create(event.command.usr.id, message);
+      event.reply(message);
 
       break;
+    }
   }
 }

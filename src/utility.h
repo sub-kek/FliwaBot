@@ -1,12 +1,7 @@
-//
-// Created by sub on 5/24/24.
-//
-
 #pragma once
 
 #include <string>
-#include <fstream>
-#include <iostream>
+#include <condition_variable>
 
 namespace FliwaBot {
   class dotenv {
@@ -47,5 +42,15 @@ namespace FliwaBot {
   class formatter {
   public:
     static std::string format(std::string str, const std::initializer_list<std::string>& replace);
+  };
+
+  class thread_locker {
+  private:
+    std::mutex mtx;
+    std::condition_variable lck;
+    bool completed;
+  public:
+    void wait();
+    void complete();
   };
 }

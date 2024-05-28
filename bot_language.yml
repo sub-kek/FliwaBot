@@ -1,8 +1,17 @@
 # 0 - Uptime
 # 1 - Cluster name
 # 2 - Author from the config
-
+command-status-embed-title: 'Fliwa bot status'
 command-status-embed-description: |
   Uptime: {0}
   Cluster: {1}
   Author: {2}
+
+command-status-reply-text: 'Bot status has been send to the your DM'
+
+command-reload-no-perms: 'Only bot author can reload config.'
+command-reload-successfully: 'Config reloaded.'
+
+command-ping-embed-description-checking: 'Checking ping...'
+# 0 - Latency in ms
+command-ping-embed-description: 'Ping: {0}ms'

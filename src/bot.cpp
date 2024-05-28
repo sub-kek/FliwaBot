@@ -1,12 +1,12 @@
 #include "bot.h"
 #include "config/config.h"
 #include "config/language.h"
-
 #include "event/fliwa_event.h"
+#include "command/command.h"
+#include "utility.h"
 
 namespace FliwaBot {
   FliwaCord::cluster *bot::core = nullptr;
-
   std::string bot::start_data::token;
   FliwaCord::intents bot::start_data::intents;
 
@@ -21,8 +21,21 @@ namespace FliwaBot {
   }
 
   void bot::register_slashcommands() {
-    core->global_command_create(FliwaCord::slashcommand("ping", "Проверка пинга бота.", core->me.id));
-    core->global_command_create(FliwaCord::slashcommand("status", "Базовая информация о боте и прочее.", core->me.id));
+    command::register_commands();
+
+    for (auto &cmd: command::commands) {
+      core->global_command_create(FliwaCord::slashcommand(cmd->get_name(), cmd->get_description(), core->me.id),
+                                  [&](const FliwaCord::confirmation_callback_t &callback) {
+                                      if (!callback.is_error())
+                                        core->log(FliwaCord::ll_info,
+                                                  formatter::format("Successfully registered command {0} - {1}",
+                                                                    {cmd->get_name(), cmd->get_description()}));
+                                      else
+                                        core->log(FliwaCord::ll_error,
+                                                  formatter::format("Error while registering command {0} - {1}",
+                                                                    {cmd->get_name(), cmd->get_description()}));
+                                  });
+    }
   }
 
   void bot::init() {
