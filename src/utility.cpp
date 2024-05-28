@@ -129,9 +129,9 @@ namespace FliwaBot {
     return str;
   }
 
-  std::string formatter::format(std::string str, const std::initializer_list<std::string>& replace) {
+  std::string formatter::format(std::string str, const std::initializer_list<std::string> &replace) {
     int i = 0;
-    for (const auto& repl : replace) {
+    for (const auto &repl: replace) {
       std::string pattern = "\\{" + std::to_string(i) + "\\}";
       str = std::regex_replace(str, std::regex(pattern), repl);
       i++;

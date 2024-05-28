@@ -51,7 +51,7 @@ namespace FliwaBot {
         << ": " << event.message << "\n";
   }
 
-  void bot::log(const FliwaCord::loglevel& severity, const std::string &message) {
+  void bot::log(const FliwaCord::loglevel &severity, const std::string &message) {
     std::cout
         << "[" << FliwaCord::utility::current_date_time() << " " << FliwaCord::utility::loglevel(severity) << "]"
         << ": " << message << "\n";

@@ -2,7 +2,7 @@
 
 #include "../bot.h"
 
-void FliwaBot::event::on_ready(const FliwaCord::ready_t&) {
+void FliwaBot::event::on_ready(const FliwaCord::ready_t &) {
   FliwaBot::bot::core->log(FliwaCord::ll_info, "Bot ready as " + FliwaBot::bot::core->me.format_username());
 
   FliwaBot::bot::register_slashcommands();

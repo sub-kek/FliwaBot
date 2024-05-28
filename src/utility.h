@@ -41,7 +41,7 @@ namespace FliwaBot {
 
   class formatter {
   public:
-    static std::string format(std::string str, const std::initializer_list<std::string>& replace);
+    static std::string format(std::string str, const std::initializer_list<std::string> &replace);
   };
 
   class thread_locker {
@@ -51,7 +51,9 @@ namespace FliwaBot {
     bool completed;
   public:
     void wait();
+
     void complete();
+
     bool is_locked();
   };
 }

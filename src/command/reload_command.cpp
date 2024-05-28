@@ -18,7 +18,6 @@ namespace FliwaBot {
   void reload_command::execute(const FliwaCord::slashcommand_t &event) {
     FliwaCord::message message = FliwaCord::message()
         .set_flags(config::command_reload_ephemeral ? FliwaCord::m_ephemeral : 0);
-
     FliwaCord::embed embed = embed_builder::get_styled_embed()
         .set_description(language::command_reload_no_perms);
 

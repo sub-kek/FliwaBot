@@ -5,7 +5,7 @@
 namespace FliwaBot {
   class config {
   private:
-    static YAML::Node language_file;
+    static YAML::Node config_file;
 
   public:
     static void init(const char *file_path);

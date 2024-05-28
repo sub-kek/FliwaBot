@@ -19,7 +19,7 @@ namespace FliwaBot {
     FliwaCord::embed embed = embed_builder::get_styled_embed()
         .set_description(language::command_ping_embed_description_checking);
     const auto begin_time = std::chrono::steady_clock::now();
-    auto* locker = new thread_locker();
+    auto *locker = new thread_locker();
 
     event.reply(embed, [&locker](const FliwaCord::confirmation_callback_t &) {
         locker->complete();

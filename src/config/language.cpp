@@ -6,7 +6,6 @@
 
 namespace FliwaBot {
   YAML::Node language::language_file;
-
   std::string language::command_status_embed_description;
   std::string language::command_status_embed_title;
   std::string language::command_status_reply_text;
