@@ -8,3 +8,15 @@ command-status-send-dm: false
 command-status-ephemeral: false
 
 command-reload-ephemeral: false
+
+ping-command-name: 'ping'
+ping-command-description: 'Calculate bot ping/latency and others.'
+
+status-command-name: 'status'
+status-command-description: 'Get base cluster status.'
+
+reload-command-name: 'reload'
+reload-command-description: 'Reload cluster config only bot author can...'
+
+info-command-name: 'info'
+info-command-description: 'Show information of the bot'

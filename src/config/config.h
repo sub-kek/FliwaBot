@@ -17,5 +17,13 @@ namespace FliwaBot {
     static bool command_status_send_dm;
     static bool command_status_ephemeral;
     static bool command_reload_ephemeral;
+    static std::string ping_command_name;
+    static std::string ping_command_description;
+    static std::string status_command_name;
+    static std::string status_command_description;
+    static std::string reload_command_name;
+    static std::string reload_command_description;
+    static std::string info_command_name;
+    static std::string info_command_description;
   };
 }

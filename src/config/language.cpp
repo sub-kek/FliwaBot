@@ -14,6 +14,12 @@ namespace FliwaBot {
   std::string language::command_reload_successfully;
   std::string language::command_ping_embed_description_checking;
   std::string language::command_ping_embed_description;
+  std::string language::info_command_embed_title;
+  std::string language::info_command_embed_description;
+  std::string language::info_command_embed_field_build_name;
+  std::string language::info_command_embed_field_build_value;
+  std::string language::info_command_embed_field_developer_name;
+  std::string language::info_command_embed_field_developer_value;
 
   void language::init(const char *file_path) {
     language_file = YAML::LoadFile(file_path);
@@ -26,5 +32,11 @@ namespace FliwaBot {
     command_reload_successfully = language_file["command-reload-successfully"].as<std::string>();
     command_ping_embed_description_checking = language_file["command-ping-embed-description-checking"].as<std::string>();
     command_ping_embed_description = language_file["command-ping-embed-description"].as<std::string>();
+    info_command_embed_title = language_file["info-command-embed-title"].as<std::string>();
+    info_command_embed_description = language_file["info-command-embed-description"].as<std::string>();
+    info_command_embed_field_build_name = language_file["info-command-embed-field-build-name"].as<std::string>();
+    info_command_embed_field_build_value = language_file["info-command-embed-field-build-value"].as<std::string>();
+    info_command_embed_field_developer_name = language_file["info-command-embed-field-developer-name"].as<std::string>();
+    info_command_embed_field_developer_value = language_file["info-command-embed-field-developer-value"].as<std::string>();
   }
 }

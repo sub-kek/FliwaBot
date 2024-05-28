@@ -8,11 +8,11 @@
 
 namespace FliwaBot {
   std::string reload_command::get_name() {
-    return "reload";
+    return config::reload_command_name;
   }
 
   std::string reload_command::get_description() {
-    return "Reload cluster config only bot author can...";
+    return config::reload_command_description;
   }
 
   void reload_command::execute(const FliwaCord::slashcommand_t &event) {

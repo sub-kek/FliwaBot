@@ -8,11 +8,11 @@
 
 namespace FliwaBot {
   std::string status_command::get_name() {
-    return "status";
+    return config::status_command_name;
   }
 
   std::string status_command::get_description() {
-    return "Get base cluster status";
+    return config::status_command_description;
   }
 
   void status_command::execute(const FliwaCord::slashcommand_t &event) {

@@ -17,5 +17,11 @@ namespace FliwaBot {
     static std::string command_reload_no_perms;
     static std::string command_ping_embed_description_checking;
     static std::string command_ping_embed_description;
+    static std::string info_command_embed_title;
+    static std::string info_command_embed_description;
+    static std::string info_command_embed_field_build_name;
+    static std::string info_command_embed_field_build_value;
+    static std::string info_command_embed_field_developer_name;
+    static std::string info_command_embed_field_developer_value;
   };
 }

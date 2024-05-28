@@ -4,14 +4,15 @@
 #include "../utility.h"
 #include "../config/language.h"
 #include "../builder.h"
+#include "../config/config.h"
 
 namespace FliwaBot {
   std::string ping_command::get_name() {
-    return "ping";
+    return config::ping_command_name;
   }
 
   std::string ping_command::get_description() {
-    return "Calculate bot ping/latency and others";
+    return config::ping_command_description;
   }
 
   void ping_command::execute(const FliwaCord::slashcommand_t &event) {

@@ -2,6 +2,7 @@
 #include "ping_command.h"
 #include "status_command.h"
 #include "reload_command.h"
+#include "info_command.h"
 
 namespace FliwaBot {
   std::vector<std::unique_ptr<command>> command::commands;
@@ -10,5 +11,6 @@ namespace FliwaBot {
     commands.push_back(std::make_unique<ping_command>(ping_command()));
     commands.push_back(std::make_unique<status_command>(status_command()));
     commands.push_back(std::make_unique<reload_command>(reload_command()));
+    commands.push_back(std::make_unique<info_command>(info_command()));
   }
 }

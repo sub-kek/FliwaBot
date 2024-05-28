@@ -14,6 +14,14 @@ namespace FliwaBot {
   bool config::command_status_send_dm;
   bool config::command_status_ephemeral;
   bool config::command_reload_ephemeral;
+  std::string config::ping_command_name;
+  std::string config::ping_command_description;
+  std::string config::status_command_name;
+  std::string config::status_command_description;
+  std::string config::reload_command_name;
+  std::string config::reload_command_description;
+  std::string config::info_command_name;
+  std::string config::info_command_description;
 
   void config::init(const char *file_path) {
     language_file = YAML::LoadFile(file_path);
@@ -26,5 +34,13 @@ namespace FliwaBot {
     command_status_send_dm = language_file["command-status-send-dm"].as<bool>();
     command_status_ephemeral = language_file["command-status-ephemeral"].as<bool>();
     command_reload_ephemeral = language_file["command-reload-ephemeral"].as<bool>();
+    ping_command_name = language_file["ping-command-name"].as<std::string>();
+    ping_command_description = language_file["ping-command-description"].as<std::string>();
+    status_command_name = language_file["status-command-name"].as<std::string>();
+    status_command_description = language_file["status-command-description"].as<std::string>();
+    reload_command_name = language_file["reload-command-name"].as<std::string>();
+    reload_command_description = language_file["reload-command-description"].as<std::string>();
+    info_command_name = language_file["info-command-name"].as<std::string>();
+    info_command_description = language_file["info-command-description"].as<std::string>();
   }
 }

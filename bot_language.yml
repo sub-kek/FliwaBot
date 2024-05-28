@@ -15,3 +15,16 @@ command-reload-successfully: 'Config reloaded.'
 command-ping-embed-description-checking: 'Checking ping...'
 # 0 - Latency in ms
 command-ping-embed-description: 'Latency: {0}ms'
+
+info-command-embed-title: 'FliwaBot'
+info-command-embed-description: |
+  Hello my name's Fliwa.
+  
+  My commands must be called using `/`
+
+info-command-embed-field-build-name: 'Build'
+# 0 - Version
+info-command-embed-field-build-value: '{0}'
+info-command-embed-field-developer-name: 'My developer'
+# 0 - Developer from config
+info-command-embed-field-developer-value: '{0}'
