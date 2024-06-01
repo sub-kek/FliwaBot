@@ -1,9 +1,8 @@
 #include "bot.h"
-#include "config/config.h"
-#include "config/language.h"
 #include "event/fliwa_event.h"
 #include "command/command.h"
 #include "form/form.h"
+#include "button/button.h"
 #include "utility.h"
 
 namespace FliwaBot {
@@ -44,10 +43,12 @@ namespace FliwaBot {
         form::register_forms();
     }
 
+    void bot::register_buttons() {
+        button::register_buttons();
+    }
+
     void bot::init() {
         core = new FliwaCord::cluster(start_data::token, start_data::intents);
-        config::init("bot_config.yml");
-        language::init("bot_language.yml");
     }
 
     void bot::logger(const FliwaCord::log_t &event) {

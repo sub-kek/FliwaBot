@@ -7,4 +7,5 @@ void FliwaBot::event::on_ready(const FliwaCord::ready_t &) {
 
     FliwaBot::bot::register_slashcommands();
     FliwaBot::bot::register_forms();
+    FliwaBot::bot::register_buttons();
 }

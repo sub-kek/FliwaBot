@@ -1,32 +1,35 @@
 #include "info_command.h"
 
-#include "../config/config.h"
-#include "../config/language.h"
 #include "../builder.h"
 #include "../utility.h"
 
 namespace FliwaBot {
     std::string info_command::get_name() {
-        return config::info_command_name;
+        return "инфо";
     }
 
     std::string info_command::get_description() {
-        return config::info_command_description;
+        return "Информация о боте.";
     }
 
     void info_command::execute(const FliwaCord::slashcommand_t &event) {
         FliwaCord::embed embed = embed_builder::get_styled_embed()
-                .set_title(language::info_command_embed_title)
-                .set_description(language::info_command_embed_description)
+                .set_title("FliwaBot")
+                .set_description("Я была создана чтобы помогать всем на этом сервере")
                 .add_field(
-                        language::info_command_embed_field_build_name,
-                        formatter::format(language::info_command_embed_field_build_value, {dotenv::getenv("VERSION")}),
+                        "Версия",
+                        dotenv::getenv("VERSION"),
                         true
                 )
                 .add_field(
-                        language::info_command_embed_field_developer_name,
-                        formatter::format(language::info_command_embed_field_developer_value, {config::author_name}),
+                        "Главный разработчик",
+                        formatter::format("<@{0}>", {dotenv::getenv("AUTHOR_ID")}),
                         true
+                )
+                .add_field(
+                        "Полезные ссылки",
+                        "[Github](https://github.com/sub-kek/FliwaBot)",
+                        false
                 );
         event.reply(embed);
     }

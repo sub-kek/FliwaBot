@@ -18,7 +18,10 @@ namespace FliwaBot {
         static void register_events();
 
         static void register_slashcommands();
+
         static void register_forms();
+
+        static void register_buttons();
 
         static FliwaCord::cluster *core;
 
