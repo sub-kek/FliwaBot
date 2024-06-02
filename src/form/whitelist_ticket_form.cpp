@@ -1,3 +1,5 @@
+#include <regex>
+
 #include "whitelist_ticket_form.h"
 #include "../bot.h"
 #include "../builder.h"
@@ -35,16 +37,23 @@ namespace FliwaBot {
 
     void whitelist_ticket_form::submit(const FliwaCord::form_submit_t &event) {
         std::string nickname = std::get<std::string>(event.components[0].components[0].value);
+        std::string age_str = std::regex_replace(std::get<std::string>(event.components[1].components[0].value),
+                                                 std::regex("[^0-9]+"), "");
 
         FliwaCord::message message = FliwaCord::message()
                 .add_embed(
                         embed_builder::get_styled_embed()
                                 .set_title("Тикет создан")
                                 .set_description(
-                                        formatter::format("Вы можете посмотреть его здесь <#{0}>",
-                                                          {
-                                                                  "temp empty"
-                                                          })
+                                        formatter::format(
+                                                "Вы можете посмотреть его здесь <#{0}>\n"
+                                                "Nick: `{1}`\n"
+                                                "Age: {2}",
+                                                {
+                                                        "temp empty",
+                                                        nickname,
+                                                        age_str
+                                                })
                                 )
                 )
                 .set_flags(FliwaCord::m_ephemeral);

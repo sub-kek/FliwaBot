@@ -14,7 +14,5 @@ target_compile_options(FliwaBot PRIVATE -Wall -Wextra -Wpedantic)
 target_compile_features(FliwaBot PRIVATE cxx_std_23)
 
 add_subdirectory("libs/FliwaCord")
-add_subdirectory("libs/yaml-cpp")
 
 target_link_libraries(FliwaBot PRIVATE FliwaCord)
-target_link_libraries(FliwaBot PRIVATE yaml-cpp)
