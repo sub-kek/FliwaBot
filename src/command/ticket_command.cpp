@@ -23,7 +23,7 @@ namespace FliwaBot {
         message.add_embed(embed);
         FliwaCord::component whitelist_button
                 = FliwaCord::component()
-                        .set_id("ticket_whitelist")
+                        .set_id("ticket_whitelist_button")
                         .set_style(FliwaCord::cos_success)
                         .set_label("Вайтлист")
                         .set_type(FliwaCord::cot_button);
@@ -33,7 +33,7 @@ namespace FliwaBot {
                 .set_description("Если нашел(а) баг/дюп/лаги на сервере");
         message.add_embed(embed);
         FliwaCord::component bugs_button = FliwaCord::component()
-                .set_id("ticket_server_bugs")
+                .set_id("ticket_server_bugs_button")
                 .set_style(FliwaCord::cos_danger)
                 .set_label("Ошибки")
                 .set_type(FliwaCord::cot_button);

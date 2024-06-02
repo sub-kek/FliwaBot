@@ -18,6 +18,8 @@ namespace FliwaBot {
     void bot::register_events() {
         core->on_log(logger);
         core->on_slashcommand(event::on_slashcommand);
+        core->on_form_submit(event::on_form_submit);
+        core->on_button_click(event::on_button_click);
         core->on_ready(event::on_ready);
     }
 
