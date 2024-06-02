@@ -20,7 +20,7 @@ namespace FliwaBot {
 
         const auto &begin_time = std::chrono::steady_clock::now();
 
-        auto *locker = new thread_locker();
+        auto *locker = new thread_locker;
 
         event.reply(embed, [&locker](const FliwaCord::confirmation_callback_t &) {
             locker->complete();

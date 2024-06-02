@@ -26,19 +26,19 @@ namespace FliwaBot {
     void bot::register_slashcommands() {
         command::register_commands();
 
-        for (const auto &cmd: core->global_commands_get_sync()) {
-            auto *locker = new thread_locker;
-
-            core->global_command_delete(cmd.second.id, [&](const FliwaCord::confirmation_callback_t &) {
-                log(FliwaCord::ll_info,
-                    formatter::format("Удалена команда {0} - {1}",
-                                      {cmd.second.name, cmd.second.description}));
-
-                locker->complete();
-            });
-
-            locker->wait();
-        }
+//        for (const auto &cmd: core->global_commands_get_sync()) {
+//            auto *locker = new thread_locker;
+//
+//            core->global_command_delete(cmd.second.id, [&](const FliwaCord::confirmation_callback_t &) {
+//                log(FliwaCord::ll_info,
+//                    formatter::format("Удалена команда {0} - {1}",
+//                                      {cmd.second.name, cmd.second.description}));
+//
+//                locker->complete();
+//            });
+//
+//            locker->wait();
+//        }
 
         for (auto &cmd: command::commands) {
             core->global_command_create(FliwaCord::slashcommand(cmd->get_name(), cmd->get_description(), core->me.id),

@@ -2,6 +2,7 @@
 
 #include "../builder.h"
 #include "../utility.h"
+#include "../config.h"
 
 namespace FliwaBot {
     std::string info_command::get_name() {
@@ -18,12 +19,13 @@ namespace FliwaBot {
                 .set_description("Я была создана чтобы помогать всем на этом сервере")
                 .add_field(
                         "Версия",
-                        dotenv::getenv("VERSION"),
+                        formatter::format("{0} <t:{1}:d>",
+                                          {config::version, config::version_timestamp}),
                         true
                 )
                 .add_field(
                         "Главный разработчик",
-                        formatter::format("<@{0}>", {dotenv::getenv("AUTHOR_ID")}),
+                        formatter::format("<@{0}>", {config::author_id}),
                         true
                 )
                 .add_field(

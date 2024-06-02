@@ -48,7 +48,7 @@ namespace FliwaBot {
     private:
         std::mutex mtx;
         std::condition_variable lck;
-        bool completed;
+        bool completed = false;
     public:
         void wait();
 
