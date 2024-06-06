@@ -1,5 +1,3 @@
-#include <FliwaCord/fliwacord.h>
-
 #include "builder.h"
 
 namespace FliwaBot {

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <FliwaCord/fliwacord.h>
+
 namespace FliwaBot {
     class embed_builder {
     public:

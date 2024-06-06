@@ -8,3 +8,6 @@ build/
 
 # Some secret vars
 .env
+
+# clangd
+compile-commands.json
