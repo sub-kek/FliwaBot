@@ -10,4 +10,5 @@ build/
 .env
 
 # clangd
+.cache/
 compile-commands.json
